@@ -27,7 +27,7 @@
         }
 
         header {
-            background: rgba(30, 30, 30, 0.8);
+            background: #000000;
             padding: 20px;
             text-align: center;
             position: sticky;
@@ -223,6 +223,17 @@
             canvas.height = window.innerHeight;
         });
 
+        const mouse = {
+            x: null,
+            y: null,
+            radius: 150
+        };
+
+        window.addEventListener('mousemove', (event) => {
+            mouse.x = event.x;
+            mouse.y = event.y;
+        });
+
         class Particle {
             constructor(x, y, directionX, directionY, size, color) {
                 this.x = x;
@@ -241,12 +252,22 @@
             }
 
             update() {
+                // Mouse interaction
+                const dx = mouse.x - this.x;
+                const dy = mouse.y - this.y;
+                const distance = Math.sqrt(dx * dx + dy * dy);
+                if (distance < mouse.radius) {
+                    this.x -= dx / distance;
+                    this.y -= dy / distance;
+                }
+
                 if (this.x + this.size > canvas.width || this.x - this.size < 0) {
                     this.directionX = -this.directionX;
                 }
                 if (this.y + this.size > canvas.height || this.y - this.size < 0) {
                     this.directionY = -this.directionY;
                 }
+
                 this.x += this.directionX;
                 this.y += this.directionY;
                 this.draw();
