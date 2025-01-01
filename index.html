@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Your AI Project</title>
+    <title>Proton</title>
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
     <style>
         body {
@@ -50,6 +50,13 @@
             text-align: center;
             padding: 50px 20px;
             background: linear-gradient(135deg, #ff6f61, #ff8e53);
+        }
+
+        .hero img {
+            border-radius: 50%;
+            width: 150px;
+            height: 150px;
+            margin-bottom: 20px;
         }
 
         .hero h2 {
@@ -102,6 +109,41 @@
             color: #b0b0b0;
         }
 
+        .ai-images {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+            justify-content: center;
+            padding: 20px;
+        }
+
+        .ai-images img {
+            width: 300px;
+            height: auto;
+            border-radius: 10px;
+        }
+
+        .twitter-button {
+            display: flex;
+            justify-content: center;
+            margin: 20px 0;
+        }
+
+        .twitter-button a {
+            padding: 10px 20px;
+            font-size: 1rem;
+            color: #ffffff;
+            background: #1DA1F2;
+            border: none;
+            border-radius: 5px;
+            text-decoration: none;
+            cursor: pointer;
+        }
+
+        .twitter-button a:hover {
+            background: #0d8dd8;
+        }
+
         footer {
             text-align: center;
             padding: 20px;
@@ -113,7 +155,7 @@
 
 <body>
     <header>
-        <h1>Your AI Project</h1>
+        <h1>Proton</h1>
         <nav>
             <a href="#about">About</a>
             <a href="#features">Features</a>
@@ -123,7 +165,8 @@
 
     <section class="hero">
         <div>
-            <h2>Welcome to Your AI Project</h2>
+            <img src="ai-avatar.png" alt="Proton Avatar">
+            <h2>Welcome to Proton</h2>
             <p>Revolutionizing the way AI works for you. Discover cutting-edge technology tailored to your needs.</p>
             <button>Learn More</button>
         </div>
@@ -145,8 +188,18 @@
         </div>
     </section>
 
+    <section class="ai-images">
+        <img src="ai-image1.jpg" alt="AI Image 1">
+        <img src="ai-image2.jpg" alt="AI Image 2">
+        <img src="ai-image3.jpg" alt="AI Image 3">
+    </section>
+
+    <div class="twitter-button">
+        <a href="https://twitter.com/yourusername" target="_blank">Follow Us on Twitter</a>
+    </div>
+
     <footer>
-        <p>&copy; 2025 Your AI Project. All rights reserved.</p>
+        <p>&copy; 2025 Proton. All rights reserved.</p>
     </footer>
 </body>
 
