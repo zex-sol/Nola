@@ -153,6 +153,13 @@
             }
         }
 
+        .copy-box span {
+            flex-grow: 1;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+        }
+
         .copy-button {
             padding: 8px 12px;
             background-color: #ff6f61;
@@ -276,7 +283,7 @@
         </nav>
     </header>
 
-    <section class=\"hero\"> <div> <img src=\"ai-avatar.png\" alt=\"Nola Avatar\"> <h2>Welcome to Nola</h2> <p>Revolutionizing the way AI works for you. Discover cutting-edge technology tailored to your needs.</p> <div class=\"copy-box\"> <button class=\"copy-button\" onclick=\"copyToClipboard()\">Copy</button> </div> <div class=\"copy-box\" style=\"margin-top: 20px;\"> <button class=\"copy-button\" onclick=\"copyToClipboard()\">Copy</button> </div> <a href=\"https://x.com/NolaTechAI\" target=\"_blank\" style=\"display: inline-block; padding: 10px 20px; background: #ff6f61; color: white; text-decoration: none; border-radius: 5px; font-weight: bold;\">Follow Us on Twitter</a> </div> </section>
+    <section class="hero"> <div> <img src="ai-avatar.png" alt="Nola Avatar"> <h2>Welcome to Nola</h2> <p>Revolutionizing the way AI works for you. Discover cutting-edge technology tailored to your needs.</p> <div class="copy-box"> <span id="copyText"></span> <button class="copy-button" onclick="copyToClipboard()">Copy</button> </div> <a href="https://x.com/NolaTechAI" target="_blank" style="display: inline-block; padding: 10px 20px; background: #ff6f61; color: white; text-decoration: none; border-radius: 5px; font-weight: bold;">Follow Us on Twitter</a> </div> </section>
 
     <section class="ai-images">
         <div>
@@ -293,7 +300,9 @@
         </div>
     </section>
 
-    
+    <div class="chatbot" onclick="toggleChatbot()">
+        <img src="chat-icon.png" alt="Chatbot Icon">
+    </div>
 
     <footer>
         <p>&copy; 2025 Nola. All rights reserved.</p>
