@@ -208,7 +208,9 @@
         <nav>
             <a href="#about">About</a>
             <a href="#features">Features</a>
-            <a href="#contact">Contact</a>
+            <a href="https://x.com/NolaTechAI" target="_blank">
+                <img src="twitter.png" alt="Twitter" style="width: 24px; height: 24px;">
+            </a>
         </nav>
     </header>
 
@@ -221,24 +223,19 @@
         </div>
     </section>
 
-    <section class="ai-images">
-        <div>
-            <img src="ai-image1.png" alt="AI Image 1">
-            <div class="info-box">Nola was created by the smartest scientists in the world. It is only getting smarter as time goes on, constantly learning and evolving. This makes Nola a leader in AI innovation. Stay tuned for groundbreaking advancements!</div>
-        </div>
-        <div>
-            <img src="ai-image2.png" alt="AI Image 2">
-            <div class="info-box">Nola has human-like characteristics when interacting with users. It can adapt its tone and understanding to make interactions feel natural. Experience AI that feels more human than ever before.</div>
-        </div>
-        <div>
-            <img src="ai-image3.png" alt="AI Image 3">
-            <div class="info-box">Nola's dataset is growing exponentially. By 2026, it will be smart enough to solve any problem known to mankind. Prepare to see the future of AI intelligence unfold.</div>
-        </div>
+    <section id="about" style="padding: 50px; text-align: center; background: rgba(0, 0, 0, 0.85);">
+        <h2>About Nola</h2>
+        <p>Nola is an advanced AI designed to revolutionize how technology integrates into daily life. Built by a team of the world's leading scientists and engineers, Nola combines cutting-edge machine learning algorithms with a user-friendly interface to deliver an AI experience like no other.</p>
     </section>
 
-    <div class="chatbot" onclick="toggleChatbot()">
-        <img src="chat-icon.png" alt="Chatbot Icon">
-    </div>
+    <section id="features" style="padding: 50px; text-align: center; background: rgba(30, 30, 30, 0.95);">
+        <h2>Features</h2>
+        <ul style="list-style: none; padding: 0;">
+            <li>Human-like Interactions</li>
+            <li>Real-Time Problem Solving</li>
+            <li>Exponential Learning and Growth</li>
+        </ul>
+    </section>
 
     <footer>
         <p>&copy; 2025 Nola. All rights reserved.</p>
@@ -260,7 +257,7 @@
         const mouse = {
             x: null,
             y: null,
-            radius: 100
+            radius: 80
         };
 
         window.addEventListener('mousemove', (event) => {
@@ -290,8 +287,8 @@
                 const dy = mouse.y - this.y;
                 const distance = Math.sqrt(dx * dx + dy * dy);
                 if (distance < mouse.radius) {
-                    this.x -= dx / 10;
-                    this.y -= dy / 10;
+                    this.x -= dx / 20;
+                    this.y -= dy / 20;
                 }
 
                 if (this.x + this.size > canvas.width || this.x - this.size < 0) {
@@ -309,14 +306,14 @@
 
         function init() {
             particlesArray = [];
-            const numberOfParticles = (canvas.width * canvas.height) / 1500; // Increased density for orange particles
+            const numberOfParticles = (canvas.width * canvas.height) / 1000;
             for (let i = 0; i < numberOfParticles; i++) {
-                const size = Math.random() * 2 + 1;
+                const size = Math.random() * 4 + 2;
                 const x = Math.random() * (canvas.width - size * 2) + size;
                 const y = Math.random() * (canvas.height - size * 2) + size;
                 const directionX = Math.random() * 2 - 1;
                 const directionY = Math.random() * 2 - 1;
-                const color = 'rgba(255, 100, 0, 0.8)'; // Brighter orange color
+                const color = 'rgba(255, 140, 0, 0.9)';
 
                 particlesArray.push(new Particle(x, y, directionX, directionY, size, color));
             }
@@ -331,20 +328,10 @@
         init();
         animate();
 
-        function toggleChatbot() {
-            const input = prompt("Hi, my name is Nola! How can I assist you today?");
-            if (input) {
-                if (input.toLowerCase().includes("help")) {
-                    alert("Sure! Let me know what you need help with.");
-                } else if (input.toLowerCase().includes("features")) {
-                    alert("Nola offers AI solutions, user-friendly designs, and customizable applications. Want to know more?");
-                } else {
-                    alert("I'm still learning! I'll try my best to help you with that.");
-                }
-            } else {
-                alert("Feel free to ask me anything anytime!");
-            }
-        }
+        window.addEventListener('load', () => {
+            const chatbotElement = document.querySelector('#chatbot img');
+            chatbotElement.click();
+        });
     </script>
 
     <!-- Botpress Webchat Embed -->
