@@ -27,7 +27,7 @@
         }
 
         header {
-            background: #000000; /* Non-transparent black */
+            background: #000000;
             padding: 20px;
             text-align: center;
             position: sticky;
@@ -62,132 +62,25 @@
             transform: scale(1.1);
         }
 
-        .hero {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            flex-direction: column;
-            text-align: center;
+        section {
             padding: 50px 20px;
-            background: rgba(0, 0, 0, 0.8);
-            position: relative;
+            text-align: center;
         }
 
-        .hero img {
-            border-radius: 50%;
-            width: 200px;
-            height: 200px;
-            margin-bottom: 20px;
-            border: 5px solid #ffffff;
-            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.6);
-        }
-
-        .hero h2 {
-            font-size: 2.5rem;
-            margin-bottom: 20px;
-            text-transform: uppercase;
-            letter-spacing: 2px;
-            color: #ffffff;
-        }
-
-        .hero p {
-            font-size: 1.2rem;
-            margin-bottom: 20px;
-            max-width: 600px;
-            line-height: 1.6;
-        }
-
-        .hero button {
-            padding: 10px 20px;
-            font-size: 1rem;
-            color: #ffffff;
-            background: #ff6f61;
-            border: none;
-            border-radius: 5px;
-            cursor: pointer;
-            transition: background 0.3s ease, transform 0.3s ease;
-        }
-
-        .hero button:hover {
-            background: #ff8e53;
-            transform: scale(1.1);
-        }
-
-        .ai-images {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 20px;
-            justify-content: center;
-            padding: 20px;
+        section#about {
             background: rgba(0, 0, 0, 0.8);
         }
 
-        .ai-images img {
-            width: 300px;
-            height: auto;
-            border-radius: 10px;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.5);
-            transition: transform 0.3s ease, filter 0.3s ease;
-        }
-
-        .ai-images img:hover {
-            transform: scale(1.05);
-            filter: brightness(0.8);
-        }
-
-        .info-box {
-            position: absolute;
-            background: rgba(0, 0, 0, 0.8);
-            color: #ffffff;
-            padding: 15px;
-            border-radius: 10px;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.5);
-            opacity: 0;
-            transition: opacity 0.3s ease;
-            pointer-events: none;
-            width: 250px;
-        }
-
-        .ai-images div {
-            position: relative;
-        }
-
-        .ai-images div:hover .info-box {
-            opacity: 1;
+        section#features {
+            background: rgba(20, 20, 20, 0.9);
         }
 
         footer {
             text-align: center;
             padding: 20px;
-            background: #000000; /* Non-transparent black */
+            background: #000000;
             color: #ffffff;
             box-shadow: 0 -4px 6px rgba(0, 0, 0, 0.5);
-        }
-
-        .chatbot {
-            position: fixed;
-            bottom: 20px;
-            right: 20px;
-            width: 60px;
-            height: 60px;
-            background: #ff6f61;
-            border-radius: 50%;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.4);
-            cursor: pointer;
-            z-index: 1000;
-            transition: transform 0.3s ease;
-        }
-
-        .chatbot:hover {
-            transform: scale(1.1);
-        }
-
-        .chatbot img {
-            width: 30px;
-            height: 30px;
         }
 
         @keyframes glow {
@@ -208,9 +101,7 @@
         <nav>
             <a href="#about">About</a>
             <a href="#features">Features</a>
-            <a href="https://x.com/NolaTechAI" target="_blank">
-                <img src="twitter.png" alt="Twitter" style="width: 24px; height: 24px;">
-            </a>
+            <a href="https://x.com/NolaTechAI" target="_blank">Twitter</a>
         </nav>
     </header>
 
@@ -223,18 +114,14 @@
         </div>
     </section>
 
-    <section id="about" style="padding: 50px; text-align: center; background: rgba(0, 0, 0, 0.85);">
+    <section id="about">
         <h2>About Nola</h2>
-        <p>Nola is an advanced AI designed to revolutionize how technology integrates into daily life. Built by a team of the world's leading scientists and engineers, Nola combines cutting-edge machine learning algorithms with a user-friendly interface to deliver an AI experience like no other.</p>
+        <p>Nola is your AI companion designed to revolutionize the way you interact with technology. Learn how Nola is built to adapt to your needs, offering smart and human-like interactions.</p>
     </section>
 
-    <section id="features" style="padding: 50px; text-align: center; background: rgba(30, 30, 30, 0.95);">
+    <section id="features">
         <h2>Features</h2>
-        <ul style="list-style: none; padding: 0;">
-            <li>Human-like Interactions</li>
-            <li>Real-Time Problem Solving</li>
-            <li>Exponential Learning and Growth</li>
-        </ul>
+        <p>Explore Nola's innovative features, including adaptive learning, seamless AI integration, and state-of-the-art technology that puts the future in your hands.</p>
     </section>
 
     <footer>
@@ -257,7 +144,7 @@
         const mouse = {
             x: null,
             y: null,
-            radius: 80
+            radius: 50 // Reduced repulsion radius
         };
 
         window.addEventListener('mousemove', (event) => {
@@ -287,8 +174,8 @@
                 const dy = mouse.y - this.y;
                 const distance = Math.sqrt(dx * dx + dy * dy);
                 if (distance < mouse.radius) {
-                    this.x -= dx / 20;
-                    this.y -= dy / 20;
+                    this.x -= dx / 30; // Reduced repulsion strength
+                    this.y -= dy / 30;
                 }
 
                 if (this.x + this.size > canvas.width || this.x - this.size < 0) {
@@ -306,14 +193,14 @@
 
         function init() {
             particlesArray = [];
-            const numberOfParticles = (canvas.width * canvas.height) / 1000;
+            const numberOfParticles = (canvas.width * canvas.height) / 1500;
             for (let i = 0; i < numberOfParticles; i++) {
-                const size = Math.random() * 4 + 2;
+                const size = Math.random() * 2 + 1;
                 const x = Math.random() * (canvas.width - size * 2) + size;
                 const y = Math.random() * (canvas.height - size * 2) + size;
                 const directionX = Math.random() * 2 - 1;
                 const directionY = Math.random() * 2 - 1;
-                const color = 'rgba(255, 140, 0, 0.9)';
+                const color = 'rgba(255, 100, 0, 0.8)';
 
                 particlesArray.push(new Particle(x, y, directionX, directionY, size, color));
             }
@@ -327,16 +214,7 @@
 
         init();
         animate();
-
-        window.addEventListener('load', () => {
-            const chatbotElement = document.querySelector('#chatbot img');
-            chatbotElement.click();
-        });
     </script>
-
-    <!-- Botpress Webchat Embed -->
-    <script src="https://cdn.botpress.cloud/webchat/v2.2/inject.js"></script>
-    <script src="https://files.bpcontent.cloud/2025/01/01/10/20250101101100-DLL0IZ4H.js"></script>
 </body>
 
 </html>
