@@ -27,7 +27,7 @@
         }
 
         header {
-            background: rgba(0, 0, 0, 0.8);
+            background: #000000; /* Non-transparent black */
             padding: 20px;
             text-align: center;
             position: sticky;
@@ -159,7 +159,7 @@
         footer {
             text-align: center;
             padding: 20px;
-            background: rgba(0, 0, 0, 0.8);
+            background: #000000; /* Non-transparent black */
             color: #ffffff;
             box-shadow: 0 -4px 6px rgba(0, 0, 0, 0.5);
         }
@@ -316,7 +316,7 @@
                 const y = Math.random() * (canvas.height - size * 2) + size;
                 const directionX = Math.random() * 2 - 1;
                 const directionY = Math.random() * 2 - 1;
-                const color = 'rgba(255, 165, 0, 0.8)';
+                const color = 'rgba(255, 100, 0, 0.8)'; // Brighter orange color
 
                 particlesArray.push(new Particle(x, y, directionX, directionY, size, color));
             }
