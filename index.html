@@ -33,7 +33,7 @@
         }
 
         header {
-            background: linear-gradient(90deg, #ff6f61, #ff8e53);
+            background: #333333; /* Dark gray */
             padding: 20px;
             text-align: center;
             position: sticky;
@@ -215,7 +215,7 @@
         footer {
             text-align: center;
             padding: 20px;
-            background: linear-gradient(90deg, #ff6f61, #ff8e53);
+            background: #333333; /* Dark gray */
             color: #ffffff;
             box-shadow: 0 -4px 6px rgba(0, 0, 0, 0.5);
             animation: footerGlow 2s infinite alternate;
@@ -223,10 +223,10 @@
 
         @keyframes footerGlow {
             from {
-                background: linear-gradient(90deg, #ff6f61, #ff8e53);
+                background: #444444;
             }
             to {
-                background: linear-gradient(90deg, #ff8e53, #ff6f61);
+                background: #333333;
             }
         }
 
@@ -281,10 +281,7 @@
             <img src="ai-avatar.png" alt="Nola Avatar">
             <h2>Welcome to Nola</h2>
             <p>Revolutionizing the way AI works for you. Discover cutting-edge technology tailored to your needs.</p>
-            <div class="copy-box">
-                <span id="copyText">"Innovating AI Together!"</span>
-                <button class="copy-button" onclick="copyToClipboard()">Copy</button>
-            </div>
+            <div class=\"copy-box\"> <button class=\"copy-button\" onclick=\"copyToClipboard()\">Copy</button> </div>
             <a href="https://x.com/NolaTechAI" target="_blank" style="display: inline-block; padding: 10px 20px; background: #ff6f61; color: white; text-decoration: none; border-radius: 5px; font-weight: bold;">Follow Us on Twitter</a>
         </div>
     </section>
@@ -304,9 +301,7 @@
         </div>
     </section>
 
-    <div class="chatbot" onclick="toggleChatbot()">
-        <img src="chat-icon.png" alt="Chatbot Icon">
-    </div>
+    
 
     <footer>
         <p>&copy; 2025 Nola. All rights reserved.</p>
