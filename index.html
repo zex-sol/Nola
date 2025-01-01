@@ -237,9 +237,7 @@
         </div>
     </section>
 
-    <div class="chatbot" onclick="toggleChatbot()">
-        <img src="chat-icon.png" alt="Chatbot Icon">
-    </div>
+    
 
     <footer>
         <p>&copy; 2025 Nola. All rights reserved.</p>
@@ -353,8 +351,8 @@
     window.onload = function () {
         if (typeof BotpressWebChat !== 'undefined') {
             BotpressWebChat.init({
-                host: 'https://cdn.botpress.cloud', // Replace with your server URL
-                botId: '20250101101100-DLL0IZ4H' // Replace with your bot ID
+                host: 'https://cdn.botpress.cloud',
+                botId: '20250101101100-DLL0IZ4H'
             });
             BotpressWebChat.sendEvent({ type: 'show' });
         } else {
