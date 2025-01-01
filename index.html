@@ -136,8 +136,9 @@
         footer {
             text-align: center;
             padding: 20px;
-            background: rgba(30, 30, 30, 0.8);
-            color: #b0b0b0;
+            background: #000000;
+            color: #ffffff;
+            box-shadow: 0 -4px 6px rgba(0, 0, 0, 0.5);
         }
 
         .chatbot {
@@ -221,12 +222,13 @@
         window.addEventListener('resize', () => {
             canvas.width = window.innerWidth;
             canvas.height = window.innerHeight;
+            init();
         });
 
         const mouse = {
             x: null,
             y: null,
-            radius: 150
+            radius: 100
         };
 
         window.addEventListener('mousemove', (event) => {
@@ -252,13 +254,12 @@
             }
 
             update() {
-                // Mouse interaction
                 const dx = mouse.x - this.x;
                 const dy = mouse.y - this.y;
                 const distance = Math.sqrt(dx * dx + dy * dy);
                 if (distance < mouse.radius) {
-                    this.x -= dx / distance;
-                    this.y -= dy / distance;
+                    this.x -= dx / 10;
+                    this.y -= dy / 10;
                 }
 
                 if (this.x + this.size > canvas.width || this.x - this.size < 0) {
@@ -276,7 +277,7 @@
 
         function init() {
             particlesArray = [];
-            const numberOfParticles = (canvas.width * canvas.height) / 9000;
+            const numberOfParticles = (canvas.width * canvas.height) / 5000;
             for (let i = 0; i < numberOfParticles; i++) {
                 const size = Math.random() * 2 + 1;
                 const x = Math.random() * (canvas.width - size * 2) + size;
@@ -313,6 +314,10 @@
             }
         }
     </script>
+
+    <!-- Botpress Webchat Embed -->
+    <script src="https://cdn.botpress.cloud/webchat/v2.2/inject.js"></script>
+    <script src="https://files.bpcontent.cloud/2025/01/01/10/20250101101100-DLL0IZ4H.js"></script>
 </body>
 
 </html>
