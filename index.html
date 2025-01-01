@@ -236,7 +236,7 @@
         </div>
     </section>
 
-    <div class="chatbot" onclick="toggleChatbot()">
+    <div class="chatbot" id="chatbot">
         <img src="chat-icon.png" alt="Chatbot Icon">
     </div>
 
@@ -309,14 +309,14 @@
 
         function init() {
             particlesArray = [];
-            const numberOfParticles = (canvas.width * canvas.height) / 1500; // Increased density for orange particles
+            const numberOfParticles = (canvas.width * canvas.height) / 1000; // Increased density for orange particles
             for (let i = 0; i < numberOfParticles; i++) {
-                const size = Math.random() * 2 + 1;
+                const size = Math.random() * 4 + 2; // Brighter and larger particles
                 const x = Math.random() * (canvas.width - size * 2) + size;
                 const y = Math.random() * (canvas.height - size * 2) + size;
                 const directionX = Math.random() * 2 - 1;
                 const directionY = Math.random() * 2 - 1;
-                const color = 'rgba(255, 100, 0, 0.8)'; // Brighter orange color
+                const color = 'rgba(255, 140, 0, 0.9)'; // Brighter orange color
 
                 particlesArray.push(new Particle(x, y, directionX, directionY, size, color));
             }
@@ -331,20 +331,10 @@
         init();
         animate();
 
-        function toggleChatbot() {
-            const input = prompt("Hi, my name is Nola! How can I assist you today?");
-            if (input) {
-                if (input.toLowerCase().includes("help")) {
-                    alert("Sure! Let me know what you need help with.");
-                } else if (input.toLowerCase().includes("features")) {
-                    alert("Nola offers AI solutions, user-friendly designs, and customizable applications. Want to know more?");
-                } else {
-                    alert("I'm still learning! I'll try my best to help you with that.");
-                }
-            } else {
-                alert("Feel free to ask me anything anytime!");
-            }
-        }
+        window.addEventListener('load', () => {
+            const chatbotElement = document.querySelector('#chatbot img');
+            chatbotElement.click(); // Simulate a click to open the chatbot on load
+        });
     </script>
 
     <!-- Botpress Webchat Embed -->
