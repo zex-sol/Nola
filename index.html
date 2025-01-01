@@ -14,6 +14,12 @@
             background-size: cover;
             color: #ffffff;
             overflow-x: hidden;
+            transition: background 1s ease-in-out;
+        }
+
+        body:hover {
+            background: rgba(0, 0, 0, 0.9) url('https://source.unsplash.com/1600x900/?galaxy') no-repeat center center fixed;
+            background-size: cover;
         }
 
         canvas {
@@ -27,19 +33,24 @@
         }
 
         header {
-            background: #000000; /* Non-transparent black */
+            background: linear-gradient(90deg, #ff6f61, #ff8e53);
             padding: 20px;
             text-align: center;
             position: sticky;
             top: 0;
             z-index: 10;
             box-shadow: 0 4px 6px rgba(0, 0, 0, 0.5);
+            transition: transform 0.5s ease;
+        }
+
+        header:hover {
+            transform: scale(1.05);
         }
 
         header h1 {
             margin: 0;
             font-size: 2.5rem;
-            color: #ff6f61;
+            color: #ffffff;
             animation: glow 2s infinite alternate;
         }
 
@@ -58,8 +69,9 @@
         }
 
         nav a:hover {
-            color: #ff6f61;
-            transform: scale(1.1);
+            color: #000000;
+            transform: scale(1.2);
+            text-shadow: 0 0 10px #ffffff;
         }
 
         .hero {
@@ -71,6 +83,16 @@
             padding: 50px 20px;
             background: rgba(0, 0, 0, 0.8);
             position: relative;
+            animation: fadeIn 2s ease-in-out;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+            to {
+                opacity: 1;
+            }
         }
 
         .hero img {
@@ -80,6 +102,11 @@
             margin-bottom: 20px;
             border: 5px solid #ffffff;
             box-shadow: 0 10px 20px rgba(0, 0, 0, 0.6);
+            transition: transform 0.5s ease;
+        }
+
+        .hero img:hover {
+            transform: rotate(360deg);
         }
 
         .hero h2 {
@@ -111,13 +138,19 @@
             font-size: 1.1rem;
             max-width: 400px;
             margin: 20px auto;
+            animation: pulse 2s infinite;
         }
 
-        .copy-box span {
-            flex-grow: 1;
-            overflow: hidden;
-            text-overflow: ellipsis;
-            white-space: nowrap;
+        @keyframes pulse {
+            0% {
+                box-shadow: 0 0 5px #ff6f61;
+            }
+            50% {
+                box-shadow: 0 0 15px #ff8e53;
+            }
+            100% {
+                box-shadow: 0 0 5px #ff6f61;
+            }
         }
 
         .copy-button {
@@ -149,12 +182,12 @@
             height: auto;
             border-radius: 10px;
             box-shadow: 0 5px 15px rgba(0, 0, 0, 0.5);
-            transition: transform 0.3s ease, filter 0.3s ease;
+            transition: transform 0.5s ease, filter 0.3s ease;
         }
 
         .ai-images img:hover {
-            transform: scale(1.05);
-            filter: brightness(0.8);
+            transform: scale(1.1) rotate(10deg);
+            filter: brightness(1.2);
         }
 
         .info-box {
@@ -165,7 +198,7 @@
             border-radius: 10px;
             box-shadow: 0 5px 15px rgba(0, 0, 0, 0.5);
             opacity: 0;
-            transition: opacity 0.3s ease;
+            transition: opacity 0.3s ease, transform 0.3s ease;
             pointer-events: none;
             width: 250px;
         }
@@ -176,14 +209,25 @@
 
         .ai-images div:hover .info-box {
             opacity: 1;
+            transform: translateY(-10px);
         }
 
         footer {
             text-align: center;
             padding: 20px;
-            background: #000000; /* Non-transparent black */
+            background: linear-gradient(90deg, #ff6f61, #ff8e53);
             color: #ffffff;
             box-shadow: 0 -4px 6px rgba(0, 0, 0, 0.5);
+            animation: footerGlow 2s infinite alternate;
+        }
+
+        @keyframes footerGlow {
+            from {
+                background: linear-gradient(90deg, #ff6f61, #ff8e53);
+            }
+            to {
+                background: linear-gradient(90deg, #ff8e53, #ff6f61);
+            }
         }
 
         .chatbot {
@@ -192,7 +236,7 @@
             right: 20px;
             width: 60px;
             height: 60px;
-            background: #ff6f61;
+            background: linear-gradient(90deg, #ff6f61, #ff8e53);
             border-radius: 50%;
             display: flex;
             justify-content: center;
@@ -200,11 +244,12 @@
             box-shadow: 0 4px 10px rgba(0, 0, 0, 0.4);
             cursor: pointer;
             z-index: 1000;
-            transition: transform 0.3s ease;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
         }
 
         .chatbot:hover {
-            transform: scale(1.1);
+            transform: scale(1.2);
+            box-shadow: 0 4px 20px rgba(255, 255, 255, 0.8);
         }
 
         .chatbot img {
@@ -237,7 +282,7 @@
             <h2>Welcome to Nola</h2>
             <p>Revolutionizing the way AI works for you. Discover cutting-edge technology tailored to your needs.</p>
             <div class="copy-box">
-                <span id="copyText"></span>
+                <span id="copyText">"Innovating AI Together!"</span>
                 <button class="copy-button" onclick="copyToClipboard()">Copy</button>
             </div>
             <a href="https://x.com/NolaTechAI" target="_blank" style="display: inline-block; padding: 10px 20px; background: #ff6f61; color: white; text-decoration: none; border-radius: 5px; font-weight: bold;">Follow Us on Twitter</a>
