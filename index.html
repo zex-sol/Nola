@@ -74,12 +74,10 @@
         }
 
         .hero img {
-            border-radius: 50%;
-            width: 200px;
-            height: 200px;
+            width: 400px;
+            height: auto;
             margin-bottom: 20px;
-            border: 5px solid #ffffff;
-            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.6);
+            box-shadow: none;
         }
 
         .hero h2 {
@@ -97,97 +95,12 @@
             line-height: 1.6;
         }
 
-        .hero button {
-            padding: 10px 20px;
-            font-size: 1rem;
-            color: #ffffff;
-            background: #ff6f61;
-            border: none;
-            border-radius: 5px;
-            cursor: pointer;
-            transition: background 0.3s ease, transform 0.3s ease;
-        }
-
-        .hero button:hover {
-            background: #ff8e53;
-            transform: scale(1.1);
-        }
-
-        .ai-images {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 20px;
-            justify-content: center;
-            padding: 20px;
-            background: rgba(0, 0, 0, 0.8);
-        }
-
-        .ai-images img {
-            width: 300px;
-            height: auto;
-            border-radius: 10px;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.5);
-            transition: transform 0.3s ease, filter 0.3s ease;
-        }
-
-        .ai-images img:hover {
-            transform: scale(1.05);
-            filter: brightness(0.8);
-        }
-
-        .info-box {
-            position: absolute;
-            background: rgba(0, 0, 0, 0.8);
-            color: #ffffff;
-            padding: 15px;
-            border-radius: 10px;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.5);
-            opacity: 0;
-            transition: opacity 0.3s ease;
-            pointer-events: none;
-            width: 250px;
-        }
-
-        .ai-images div {
-            position: relative;
-        }
-
-        .ai-images div:hover .info-box {
-            opacity: 1;
-        }
-
         footer {
             text-align: center;
             padding: 20px;
             background: #000000; /* Non-transparent black */
             color: #ffffff;
             box-shadow: 0 -4px 6px rgba(0, 0, 0, 0.5);
-        }
-
-        .chatbot {
-            position: fixed;
-            bottom: 20px;
-            right: 20px;
-            width: 60px;
-            height: 60px;
-            background: #ff6f61;
-            border-radius: 50%;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.4);
-            cursor: pointer;
-            z-index: 1000;
-            transition: transform 0.3s ease;
-        }
-
-        .chatbot:hover {
-            transform: scale(1.1);
-        }
-
-        .chatbot img {
-            width: 30px;
-            height: 30px;
         }
 
         @keyframes glow {
@@ -205,11 +118,6 @@
     <canvas id="particleCanvas"></canvas>
     <header>
         <h1>Nola</h1>
-        <nav>
-            
-            
-            
-        </nav>
     </header>
 
     <section class="hero">
@@ -217,29 +125,10 @@
             <img src="ai-avatar.png" alt="Nola Avatar">
             <h2>Welcome to Nola</h2>
             <p>Revolutionizing the way AI works for you. Discover cutting-edge technology tailored to your needs.</p>
-            <p>Contract Address: </p>
+            <p>Contract Address:</p>
             <a href="https://x.com/NolaTechAI" target="_blank" style="display: inline-block; padding: 10px 20px; background: #ff6f61; color: white; text-decoration: none; border-radius: 5px; font-weight: bold;">Follow Us on Twitter</a>
         </div>
     </section>
-
-    <section class="ai-images">
-        <div>
-            <img src="ai-image1.png" alt="AI Image 1">
-            <div class="info-box">Nola was created by the smartest scientists in the world. It is only getting smarter as time goes on, constantly learning and evolving. This makes Nola a leader in AI innovation. Stay tuned for groundbreaking advancements!</div>
-        </div>
-        <div>
-            <img src="ai-image2.png" alt="AI Image 2">
-            <div class="info-box">Nola has human-like characteristics when interacting with users. It can adapt its tone and understanding to make interactions feel natural. Experience AI that feels more human than ever before.</div>
-        </div>
-        <div>
-            <img src="ai-image3.png" alt="AI Image 3">
-            <div class="info-box">Nola's dataset is growing exponentially. By 2026, it will be smart enough to solve any problem known to mankind. Prepare to see the future of AI intelligence unfold.</div>
-        </div>
-    </section>
-
-    <div class="chatbot" onclick="toggleChatbot()">
-        <img src="chat-icon.png" alt="Chatbot Icon">
-    </div>
 
     <footer>
         <p>&copy; 2025 Nola. All rights reserved.</p>
@@ -310,14 +199,14 @@
 
         function init() {
             particlesArray = [];
-            const numberOfParticles = (canvas.width * canvas.height) / 1500; // Increased density for orange particles
+            const numberOfParticles = (canvas.width * canvas.height) / 1500;
             for (let i = 0; i < numberOfParticles; i++) {
                 const size = Math.random() * 2 + 1;
                 const x = Math.random() * (canvas.width - size * 2) + size;
                 const y = Math.random() * (canvas.height - size * 2) + size;
                 const directionX = Math.random() * 2 - 1;
                 const directionY = Math.random() * 2 - 1;
-                const color = 'rgba(255, 100, 0, 0.8)'; // Brighter orange color
+                const color = 'rgba(255, 100, 0, 0.8)';
 
                 particlesArray.push(new Particle(x, y, directionX, directionY, size, color));
             }
@@ -331,21 +220,6 @@
 
         init();
         animate();
-
-        function toggleChatbot() {
-            const input = prompt("Hi, my name is Nola! How can I assist you today?");
-            if (input) {
-                if (input.toLowerCase().includes("help")) {
-                    alert("Sure! Let me know what you need help with.");
-                } else if (input.toLowerCase().includes("features")) {
-                    alert("Nola offers AI solutions, user-friendly designs, and customizable applications. Want to know more?");
-                } else {
-                    alert("I'm still learning! I'll try my best to help you with that.");
-                }
-            } else {
-                alert("Feel free to ask me anything anytime!");
-            }
-        }
     </script>
 
     <!-- Botpress Webchat Embed -->
