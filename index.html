@@ -10,8 +10,7 @@
         body {
             margin: 0;
             font-family: 'Roboto', sans-serif;
-            background: rgba(0, 0, 0, 0.9) url('https://source.unsplash.com/1600x900/?space') no-repeat center center fixed;
-            background-size: cover;
+            background: #1E1E1E; /* Dark grayish-black */
             color: #ffffff;
             overflow-x: hidden;
         }
@@ -27,7 +26,7 @@
         }
 
         header {
-            background: #000000;
+            background: #1E1E1E; /* Match the darker shade */
             padding: 20px;
             text-align: center;
             position: sticky;
@@ -69,7 +68,7 @@
             flex-direction: column;
             text-align: center;
             padding: 50px 20px;
-            background: rgba(30, 30, 30, 0.8);
+            background: #1E1E1E; /* Match the darker shade */
             position: relative;
         }
 
@@ -119,6 +118,7 @@
             gap: 20px;
             justify-content: center;
             padding: 20px;
+            background: #1E1E1E; /* Match the darker shade */
         }
 
         .ai-images img {
@@ -126,17 +126,39 @@
             height: auto;
             border-radius: 10px;
             box-shadow: 0 5px 15px rgba(0, 0, 0, 0.5);
-            transition: transform 0.3s ease;
+            transition: transform 0.3s ease, filter 0.3s ease;
         }
 
         .ai-images img:hover {
             transform: scale(1.05);
+            filter: brightness(0.8);
+        }
+
+        .info-box {
+            position: absolute;
+            background: rgba(0, 0, 0, 0.8);
+            color: #ffffff;
+            padding: 15px;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.5);
+            opacity: 0;
+            transition: opacity 0.3s ease;
+            pointer-events: none;
+            width: 250px;
+        }
+
+        .ai-images div {
+            position: relative;
+        }
+
+        .ai-images div:hover .info-box {
+            opacity: 1;
         }
 
         footer {
             text-align: center;
             padding: 20px;
-            background: #000000;
+            background: #1E1E1E; /* Match the darker shade */
             color: #ffffff;
             box-shadow: 0 -4px 6px rgba(0, 0, 0, 0.5);
         }
@@ -199,9 +221,18 @@
     </section>
 
     <section class="ai-images">
-        <img src="ai-image1.png" alt="AI Image 1">
-        <img src="ai-image2.png" alt="AI Image 2">
-        <img src="ai-image3.png" alt="AI Image 3">
+        <div>
+            <img src="ai-image1.png" alt="AI Image 1">
+            <div class="info-box">Nola was created by the smartest scientists in the world. It is only getting smarter as time goes on, constantly learning and evolving. This makes Nola a leader in AI innovation. Stay tuned for groundbreaking advancements!</div>
+        </div>
+        <div>
+            <img src="ai-image2.png" alt="AI Image 2">
+            <div class="info-box">Nola has human-like characteristics when interacting with users. It can adapt its tone and understanding to make interactions feel natural. Experience AI that feels more human than ever before.</div>
+        </div>
+        <div>
+            <img src="ai-image3.png" alt="AI Image 3">
+            <div class="info-box">Nola's dataset is growing exponentially. By 2026, it will be smart enough to solve any problem known to mankind. Prepare to see the future of AI intelligence unfold.</div>
+        </div>
     </section>
 
     <div class="chatbot" onclick="toggleChatbot()">
@@ -277,7 +308,7 @@
 
         function init() {
             particlesArray = [];
-            const numberOfParticles = (canvas.width * canvas.height) / 5000;
+            const numberOfParticles = (canvas.width * canvas.height) / 3000; // Increased density
             for (let i = 0; i < numberOfParticles; i++) {
                 const size = Math.random() * 2 + 1;
                 const x = Math.random() * (canvas.width - size * 2) + size;
