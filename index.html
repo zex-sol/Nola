@@ -237,6 +237,10 @@
         </div>
     </section>
 
+    <div class="chatbot" onclick="toggleChatbot()">
+        <img src="chat-icon.png" alt="Chatbot Icon">
+    </div>
+
     <footer>
         <p>&copy; 2025 Nola. All rights reserved.</p>
     </footer>
@@ -328,6 +332,20 @@
         init();
         animate();
 
+        function toggleChatbot() {
+            const input = prompt("Hi, my name is Nola! How can I assist you today?");
+            if (input) {
+                if (input.toLowerCase().includes("help")) {
+                    alert("Sure! Let me know what you need help with.");
+                } else if (input.toLowerCase().includes("features")) {
+                    alert("Nola offers AI solutions, user-friendly designs, and customizable applications. Want to know more?");
+                } else {
+                    alert("I'm still learning! I'll try my best to help you with that.");
+                }
+            } else {
+                alert("Feel free to ask me anything anytime!");
+            }
+        }
     </script>
 
     <!-- Botpress Webchat Embed -->
