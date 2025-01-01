@@ -4,19 +4,30 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Proton</title>
+    <title>Nola</title>
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
     <style>
         body {
             margin: 0;
             font-family: 'Roboto', sans-serif;
-            background-color: #121212;
+            background: rgba(0, 0, 0, 0.9) url('https://source.unsplash.com/1600x900/?space') no-repeat center center fixed;
+            background-size: cover;
             color: #ffffff;
             overflow-x: hidden;
         }
 
+        canvas {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: -1;
+        }
+
         header {
-            background: #1e1e1e;
+            background: rgba(30, 30, 30, 0.8);
             padding: 20px;
             text-align: center;
             position: sticky;
@@ -58,7 +69,7 @@
             flex-direction: column;
             text-align: center;
             padding: 50px 20px;
-            background: linear-gradient(135deg, #ff6f61, #ff8e53);
+            background: rgba(30, 30, 30, 0.8);
             position: relative;
         }
 
@@ -102,96 +113,37 @@
             transform: scale(1.1);
         }
 
-        .features {
-            padding: 50px 20px;
-            background: #1e1e1e;
-        }
-
-        .features h2 {
-            text-align: center;
-            margin-bottom: 40px;
-            color: #ff6f61;
-            position: relative;
-        }
-
-        .features h2::after {
-            content: '';
-            display: block;
-            width: 60px;
-            height: 3px;
-            background: #ff6f61;
-            margin: 10px auto 0;
-        }
-
-        .features .feature {
-            margin-bottom: 20px;
-            text-align: center;
-            transition: transform 0.3s ease;
-        }
-
-        .features .feature:hover {
-            transform: translateY(-10px);
-        }
-
-        .features .feature h3 {
-            font-size: 1.5rem;
-            margin-bottom: 10px;
-            color: #ffffff;
-        }
-
-        .features .feature p {
-            font-size: 1rem;
-            color: #b0b0b0;
-        }
-
-        .ai-images {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 20px;
-            justify-content: center;
-            padding: 20px;
-        }
-
-        .ai-images img {
-            width: 300px;
-            height: auto;
-            border-radius: 10px;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.5);
-            transition: transform 0.3s ease;
-        }
-
-        .ai-images img:hover {
-            transform: scale(1.05);
-        }
-
-        .twitter-button {
-            display: flex;
-            justify-content: center;
-            margin: 20px 0;
-        }
-
-        .twitter-button a {
-            padding: 10px 20px;
-            font-size: 1rem;
-            color: #ffffff;
-            background: #1DA1F2;
-            border: none;
-            border-radius: 5px;
-            text-decoration: none;
-            cursor: pointer;
-            transition: background 0.3s ease, transform 0.3s ease;
-        }
-
-        .twitter-button a:hover {
-            background: #0d8dd8;
-            transform: scale(1.1);
-        }
-
         footer {
             text-align: center;
             padding: 20px;
-            background: #1e1e1e;
+            background: rgba(30, 30, 30, 0.8);
             color: #b0b0b0;
+        }
+
+        .chatbot {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            width: 60px;
+            height: 60px;
+            background: #ff6f61;
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.4);
+            cursor: pointer;
+            z-index: 1000;
+            transition: transform 0.3s ease;
+        }
+
+        .chatbot:hover {
+            transform: scale(1.1);
+        }
+
+        .chatbot img {
+            width: 30px;
+            height: 30px;
         }
 
         @keyframes glow {
@@ -206,8 +158,9 @@
 </head>
 
 <body>
+    <canvas id="particleCanvas"></canvas>
     <header>
-        <h1>Proton</h1>
+        <h1>Nola</h1>
         <nav>
             <a href="#about">About</a>
             <a href="#features">Features</a>
@@ -217,42 +170,102 @@
 
     <section class="hero">
         <div>
-            <img src="ai-avatar.png" alt="Proton Avatar">
-            <h2>Welcome to Proton</h2>
+            <img src="ai-avatar.png" alt="Nola Avatar">
+            <h2>Welcome to Nola</h2>
             <p>Revolutionizing the way AI works for you. Discover cutting-edge technology tailored to your needs.</p>
             <button>Learn More</button>
         </div>
     </section>
 
-    <section class="features" id="features">
-        <h2>Features</h2>
-        <div class="feature">
-            <h3>Innovative AI Solutions</h3>
-            <p>Utilizing state-of-the-art algorithms to provide efficient and effective results.</p>
-        </div>
-        <div class="feature">
-            <h3>User-Friendly Design</h3>
-            <p>An interface designed with simplicity and functionality in mind.</p>
-        </div>
-        <div class="feature">
-            <h3>Customizable Applications</h3>
-            <p>Tailor the AI to your specific needs with our flexible integration options.</p>
-        </div>
-    </section>
-
-    <section class="ai-images">
-        <img src="ai-image1.png" alt="AI Image 1">
-        <img src="ai-image2.png" alt="AI Image 2">
-        <img src="ai-image3.png" alt="AI Image 3">
-    </section>
-
-    <div class="twitter-button">
-        <a href="https://twitter.com/yourusername" target="_blank">Follow Us on Twitter</a>
+    <div class="chatbot" onclick="toggleChatbot()">
+        <img src="chat-icon.png" alt="Chatbot Icon">
     </div>
 
     <footer>
-        <p>&copy; 2025 Proton. All rights reserved.</p>
+        <p>&copy; 2025 Nola. All rights reserved.</p>
     </footer>
+
+    <script>
+        const canvas = document.getElementById('particleCanvas');
+        const ctx = canvas.getContext('2d');
+        let particlesArray = [];
+        canvas.width = window.innerWidth;
+        canvas.height = window.innerHeight;
+
+        window.addEventListener('resize', () => {
+            canvas.width = window.innerWidth;
+            canvas.height = window.innerHeight;
+        });
+
+        class Particle {
+            constructor(x, y, directionX, directionY, size, color) {
+                this.x = x;
+                this.y = y;
+                this.directionX = directionX;
+                this.directionY = directionY;
+                this.size = size;
+                this.color = color;
+            }
+
+            draw() {
+                ctx.beginPath();
+                ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2, false);
+                ctx.fillStyle = this.color;
+                ctx.fill();
+            }
+
+            update() {
+                if (this.x + this.size > canvas.width || this.x - this.size < 0) {
+                    this.directionX = -this.directionX;
+                }
+                if (this.y + this.size > canvas.height || this.y - this.size < 0) {
+                    this.directionY = -this.directionY;
+                }
+                this.x += this.directionX;
+                this.y += this.directionY;
+                this.draw();
+            }
+        }
+
+        function init() {
+            particlesArray = [];
+            const numberOfParticles = (canvas.width * canvas.height) / 9000;
+            for (let i = 0; i < numberOfParticles; i++) {
+                const size = Math.random() * 2 + 1;
+                const x = Math.random() * (canvas.width - size * 2) + size;
+                const y = Math.random() * (canvas.height - size * 2) + size;
+                const directionX = Math.random() * 2 - 1;
+                const directionY = Math.random() * 2 - 1;
+                const color = 'rgba(255, 165, 0, 0.8)';
+
+                particlesArray.push(new Particle(x, y, directionX, directionY, size, color));
+            }
+        }
+
+        function animate() {
+            requestAnimationFrame(animate);
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+            particlesArray.forEach(particle => particle.update());
+        }
+
+        init();
+        animate();
+
+        function toggleChatbot() {
+            const input = prompt("Hi, my name is Nola! How can I assist you today?");
+            if (input) {
+                if (input.toLowerCase().includes("help")) {
+                    alert("Sure! Let me know what you need help with.");
+                } else if (input.toLowerCase().includes("features")) {
+                    alert("Nola offers AI solutions, user-friendly designs, and customizable applications. Want to know more?");
+                } else {
+                    alert("I'm still learning! I'll try my best to help you with that.");
+                }
+            } else {
+                alert("Feel free to ask me anything anytime!");
+            }
+        }
+    </script>
 </body>
 
 </html>
