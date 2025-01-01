@@ -201,7 +201,7 @@
     </style>
 </head>
 
-<body onload="BotpressWebChat.sendEvent({ type: 'show' })">
+<body>
     <canvas id="particleCanvas"></canvas>
     <header>
         <h1>Nola</h1>
@@ -349,7 +349,20 @@
     </script>
 
     <!-- Botpress Webchat Embed -->
-    <script src="https://cdn.botpress.cloud/webchat/v2.2/inject.js"></script>
+    <script>
+    window.onload = function () {
+        if (typeof BotpressWebChat !== 'undefined') {
+            BotpressWebChat.init({
+                host: 'https://cdn.botpress.cloud', // Replace with your server URL
+                botId: '20250101101100-DLL0IZ4H' // Replace with your bot ID
+            });
+            BotpressWebChat.sendEvent({ type: 'show' });
+        } else {
+            console.error("Botpress WebChat script not loaded properly.");
+        }
+    };
+</script>
+<script src="https://cdn.botpress.cloud/webchat/v2.2/inject.js"></script>
     <script src="https://files.bpcontent.cloud/2025/01/01/10/20250101101100-DLL0IZ4H.js"></script>
 </body>
 
